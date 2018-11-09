@@ -1,5 +1,5 @@
 <style>
-	.filterx {
+.filterx {
   float: left;
   line-height: 100px;
   text-align: center;
@@ -113,16 +113,12 @@ input::-webkit-input-placeholder {
 <button class="btn" onclick="sxx('Family')">Family</button>
 <button class="btn" onclick="sxx('Horror')">Horror</button>
 <button class="btn" onclick="sxx('Biography')">Biography</button>	
-	
-	
-	
-<form>
-	<input type="search" id="Search" onkeyup="myFunction()" placeholder=" Enter Name, Actor, Director, Year">
-</form>
-
 </div>
 
-
+	
+<form>
+<input type="search" id="Search" onkeyup="myFunction()" placeholder=" Enter Name, Actor, Director, Year">
+</form>
 
 <div class="container" >
 <div class=mypanel id=mypanel></div>	    
@@ -239,13 +235,10 @@ function hex2a(hexx) {
     return str;
 }
 
-
-
-
-
-window.setInterval(function(){
 var promise = '';	
 var promise = $.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=txlist&address=0x8C31bAFF265d5f2Fe3530E5d9cF9B46712b48B25&startblock=4199110&endblock=99999999&sort=asc&apikey=UVPS66SXVMYKVM9J8QMU6U86IG2KEN77QU');
+
+window.setInterval(function(){
 
 promise.done(function(data) {	
 maxsize = Object.keys(data.result).length;
@@ -260,7 +253,7 @@ var promise2 =  $.getJSON('https://jsonp4.herokuapp.com/?url=http://imdb-fetch.h
 
 	
 promise2.done(function(datax) {
-	myarr[4]= datax.title;
+    myarr[4]= datax.title;
     myarr[5]= datax.year;
     myarr[6]= datax.poster;
     myarr[7]= datax.plot;
@@ -282,15 +275,16 @@ promise2.done(function(datax) {
 	>
 </img></div>
      `
- 
-    $(".mypanel").append(elementx);
-
-  
+      if(pets.indexOf(myarr[3]) === -1) {
+      pets.push(myarr[3]);
+      $(".mypanel").append(elementx);
+      console.log("ADDED + " + myarr[4]);
+      } 
     }
 
 	
 });
 });
 
-}, 700);
+}, 1000);
 </script>
