@@ -1,45 +1,23 @@
 <style>
-.filterx {
-  float: left;
-  line-height: 100px;
-  text-align: center;
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
-.container {
-  margin-top: 20px;
-  overflow: hidden;
-}
 
 .btn {
   border: none;
   outline: none;
-  padding: 12px 16px;
+  padding: 6px 8px;
   background-color: #f1f1f1;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #ddd;
-}
-
-.btn.active {
   background-color: #666;
   color: white;
 }
 
-img{width:150px;height:250px;float:left}
+img{width:120px;height:200px;float:left}
 
 img:hover {
     transform: scale(1.2); 
 }
-
-
-
 
 input {
 	outline: none;
@@ -98,7 +76,7 @@ input::-webkit-input-placeholder {
 
 <div id="myBtnContainer">
 
-<button class="btn active" onclick="sxx('all')">All</button>
+<button class="btn" onclick="sxx('')">All</button>
 <button class="btn" onclick="sxx('Comedy')">Comedy</button>
 <button class="btn" onclick="sxx('Action')">Action</button>
 <button class="btn" onclick="sxx('Sci-Fi')">Sci-Fi</button>
@@ -113,21 +91,31 @@ input::-webkit-input-placeholder {
 <button class="btn" onclick="sxx('Family')">Family</button>
 <button class="btn" onclick="sxx('Horror')">Horror</button>
 <button class="btn" onclick="sxx('Biography')">Biography</button>	
+<button class="btn" onclick="sxx('Romance')">Romance</button>	
+<button class="btn" onclick="sxx('history')">History</button>	
 </div>
 
 	
 <form>
-<input type="search" id="Search" onkeyup="myFunction()" placeholder=" Enter Name, Actor, Director, Year">
+<input type="search" id="Search" onkeyup="myFunction()" placeholder=" Enter Name, Actor, Director, Year, Genre">
 </form>
 
-<div class="container" >
 <div class=mypanel id=mypanel></div>	    
-</div>
 
 
 	       
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
+// core begins 
+
+var pets = new Array();
+var incri = -1;
+var tempmagnet;
+
+function sxx(sxx){
+document.getElementById("Search").value = sxx;
+myFunction();
+}
 
 function tempAlert(msg,duration)
 {
@@ -168,63 +156,6 @@ function myFunction() {
     }
   }
 }
-
-
-
-sxx("all")
-function sxx(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterx");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
-  }
-}
-
-
-
-function AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
-    }
-  }
-  element.className = arr1.join(" ");
-}
-
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-
-
-// core begins 
-var myarr;
-var pets = new Array();
-var incri = -1;
-var tempmagnet;
-var playing = 0;
-
-
-
 			
 // hex to string function
 function hex2a(hexx) {
@@ -239,7 +170,7 @@ var promise = '';
 var promise = $.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=txlist&address=0x8C31bAFF265d5f2Fe3530E5d9cF9B46712b48B25&startblock=4199110&endblock=99999999&sort=asc&apikey=UVPS66SXVMYKVM9J8QMU6U86IG2KEN77QU');
 
 window.setInterval(function(){
-
+myarr = [];
 promise.done(function(data) {	
 maxsize = Object.keys(data.result).length;
 incri = incri + 1;
@@ -268,7 +199,7 @@ promise2.done(function(datax) {
     if(myarr[6].length>15){
     var magnet = myarr[3];
     elementx = `
-  <div class="filterx ${myarr[11]}" title="${myarr[4]} (${myarr[5]}) | Actors - ${myarr[9]} | Director - ${myarr[10]} " >
+  <div class="filterx" title="${myarr[4]} (${myarr[5]}) | ${myarr[9]} | ${myarr[10]} | ${myarr[11]}" >
  <img onclick="copyToClipboard('${myarr[3]}')" 
 	src="${myarr[6]}" 
 	title="${myarr[4]} (${myarr[5]}) | Actors - ${myarr[9]} | Director - ${myarr[10]} "
