@@ -110,7 +110,6 @@ input::-webkit-input-placeholder {
 
 var pets = new Array();
 var incri = -1;
-var tempmagnet;
 
 function sxx(sxx){
 document.getElementById("Search").value = sxx;
@@ -171,6 +170,7 @@ var promise = $.getJSON('https://api-ropsten.etherscan.io/api?module=account&act
 
 window.setInterval(function(){
 myarr = [];
+elementx = '';
 promise.done(function(data) {	
 maxsize = Object.keys(data.result).length;
 incri = incri + 1;
@@ -179,11 +179,10 @@ output = output.substr(2);
 output = hex2a(output);
 myarr = output.split(":");
 
-var promise2 = '';
-var promise2 =  $.getJSON('https://jsonp4.herokuapp.com/?url=http://imdb-fetch.herokuapp.com/movie/'+myarr[0]);
 
-	
-promise2.done(function(datax) {
+if(myarr[0].length > 4){
+$.getJSON('https://jsonp4.herokuapp.com/?url=http://imdb-fetch.herokuapp.com/movie/'+myarr[0]).done(function(datax) {
+    	
     myarr[4]= datax.title;
     myarr[5]= datax.year;
     myarr[6]= datax.poster;
@@ -193,29 +192,20 @@ promise2.done(function(datax) {
     myarr[10]= datax.director;
     myarr[11]= datax.genres.replace( /,/g, "" );
 
-	
-	
-	 elementx = '';
-    if(myarr[6].length>15){
-    var magnet = myarr[3];
     elementx = `
-  <div class="filterx" title="${myarr[4]} (${myarr[5]}) | ${myarr[9]} | ${myarr[10]} | ${myarr[11]}" >
- <img onclick="copyToClipboard('${myarr[3]}')" 
+    <div class='filterx' title='${myarr[4]} (${myarr[5]}) | ${myarr[9]} | ${myarr[10]} | ${myarr[11]}'>
+    <img onclick="copyToClipboard('${myarr[3]}')" 
 	src="${myarr[6]}" 
-	title="${myarr[4]} (${myarr[5]}) | Actors - ${myarr[9]} | Director - ${myarr[10]} "
-	>
-</img></div>
+	title='${myarr[4]} (${myarr[5]}) | Actors - ${myarr[9]} | Director - ${myarr[10]} '/></div>
      `
       if(pets.indexOf(myarr[3]) === -1) {
       pets.push(myarr[3]);
       $(".mypanel").append(elementx);
       console.log("ADDED + " + myarr[4]);
       } 
-    }
 
-	
 });
+}
 });
-
 }, 1000);
 </script>
