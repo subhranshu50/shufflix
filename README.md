@@ -1,9 +1,6 @@
-# shufflix
-Watch Movies on Blockchain
+# SHUFFLIX - Watch Movies on Blockchain
 
 ![alt text](https://image.ibb.co/mtWBdV/ezgif-1-e1ae54b047e4.gif)
-
-
 
 
 
