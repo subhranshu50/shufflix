@@ -1,7 +1,7 @@
 # shufflix
 Watch Movies on Blockchain
 
-![alt text](https://preview.ibb.co/jjdjXf/Capture.png)
+![alt text](https://image.ibb.co/mtWBdV/ezgif-1-e1ae54b047e4.gif)
 
 
 
