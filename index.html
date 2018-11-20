@@ -198,6 +198,7 @@ $.getJSON('https://jsonp4.herokuapp.com/?url=http://imdb-fetch.herokuapp.com/mov
 	src="${myarr[6]}" 
 	title='${myarr[4]} (${myarr[5]}) | Actors - ${myarr[9]} | Director - ${myarr[10]} '/></div>
      `
+      //dublicate remover  
       if(pets.indexOf(myarr[3]) === -1) {
       pets.push(myarr[3]);
       $(".mypanel").append(elementx);
