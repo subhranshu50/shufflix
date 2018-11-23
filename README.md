@@ -4,17 +4,19 @@
 
 
 
-ONLINE VERSION [ RUNS ON GITHUB ITSELF ]: 
+## ONLINE VERSION [ RUNS ON GITHUB ITSELF ]: 
 https://shufflix.github.io/
 
-Download : 
+## Download : 
 https://raw.githubusercontent.com/besoeasy/shufflix/master/index.html
 
 Open Link & Save PAGE
 
+## How To Add New Movies
+https://github.com/besoeasy/shufflix/wiki
 
-WORKS ON : 
 
+## WORKS ON : 
 
 ![alt text](http://icons.iconarchive.com/icons/martz90/circle/64/android-icon.png)
 ![alt text](http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/64/Folders-OS-Windows-8-Metro-icon.png)
