@@ -180,7 +180,7 @@ output = hex2a(output);
 myarr = output.split(":");
 
 
-if(myarr[0].length > 4){
+if(myarr[3].length > 25){
 $.getJSON('https://jsonp4.herokuapp.com/?url=http://imdb-fetch.herokuapp.com/movie/'+myarr[0]).done(function(datax) {
     	
     myarr[4]= datax.title;
