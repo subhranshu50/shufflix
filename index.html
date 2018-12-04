@@ -181,7 +181,7 @@ myarr = output.split(":");
 
 
 if(myarr[3].length > 25){
-$.getJSON('http://imdb-fetch.herokuapp.com/movie/'+myarr[0]+'?callback=?').done(function(datax) {
+$.getJSON('https://jsonp4.herokuapp.com/?url=http://imdb-fetch.herokuapp.com/movie/'+myarr[0]+'?callback=?').done(function(datax) {
     	
     myarr[4]= datax.title;
     myarr[5]= datax.year;
