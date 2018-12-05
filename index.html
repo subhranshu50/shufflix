@@ -109,7 +109,7 @@ input::-webkit-input-placeholder {
 // core begins 
 
 var pets = new Array();
-var incri = -1;
+var incri = 0;
 
 function sxx(sxx){
 document.getElementById("Search").value = sxx;
@@ -173,8 +173,8 @@ myarr = [];
 elementx = '';
 promise.done(function(data) {	
 maxsize = Object.keys(data.result).length;
-incri = incri + 1;
 output = data.result[incri].input;
+incri = incri + 1;	
 output = output.substr(2);
 output = hex2a(output);
 myarr = output.split(":");
