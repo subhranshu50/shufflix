@@ -1,161 +1,11 @@
-<style>
 
-.btn {
-  border: none;
-  outline: none;
-  padding: 6px 8px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #666;
-  color: white;
-}
-
-img{width:120px;height:200px;float:left}
-
-img:hover {
-    transform: scale(1.2); 
-}
-
-input {
-	outline: none;
-}
-
-input[type=search] {
-    position: fixed;
-	right: 0;
-	bottom: 3;
-	-webkit-appearance: textfield;
-	-webkit-box-sizing: content-box;
-	font-family: inherit;
-	font-size: 100%;
-}
-
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
-	display: none; 
-}
-
-
-input[type=search] {
-	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-	border: solid 1px #ccc;
-	padding: 9px 10px 9px 32px;
-	width: 135px;
-	
-	-webkit-border-radius: 10em;
-	-moz-border-radius: 10em;
-	border-radius: 10em;
-	
-	-webkit-transition: all .5s;
-	-moz-transition: all .5s;
-	transition: all .5s;
-}
-input[type=search]:focus {
-	width: 330px;
-	background-color: #fff;
-	border-color: #66CC75;
-	
-	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
-	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
-	box-shadow: 0 0 5px rgba(109,207,246,.5);
-}
-
-
-input:-moz-placeholder {
-	color: #999;
-}
-input::-webkit-input-placeholder {
-	color: #999;
-}
-
-
-</style>
-
-<div id="myBtnContainer">
-
-<button class="btn" onclick="sxx('')">All</button>
-<button class="btn" onclick="sxx('Comedy')">Comedy</button>
-<button class="btn" onclick="sxx('Action')">Action</button>
-<button class="btn" onclick="sxx('Sci-Fi')">Sci-Fi</button>
-<button class="btn" onclick="sxx('Adventure')">Adventure</button>
-<button class="btn" onclick="sxx('Crime')">Crime</button>
-<button class="btn" onclick="sxx('Thriller')">Thriller</button>
-<button class="btn" onclick="sxx('Drama')">Drama</button>
-<button class="btn" onclick="sxx('Fantasy')">Fantasy</button>  
-<button class="btn" onclick="sxx('Mystery')">Mystery</button>
-<button class="btn" onclick="sxx('Fantasy')">Fantasy</button>
-<button class="btn" onclick="sxx('Animation')">Animation</button>
-<button class="btn" onclick="sxx('Family')">Family</button>
-<button class="btn" onclick="sxx('Horror')">Horror</button>
-<button class="btn" onclick="sxx('Biography')">Biography</button>	
-<button class="btn" onclick="sxx('Romance')">Romance</button>	
-<button class="btn" onclick="sxx('history')">History</button>	
-</div>
-
-	
-<form>
-<input type="search" id="Search" onkeyup="myFunction()" placeholder=" Enter Name, Actor, Director, Year, Genre">
-</form>
-
-<div class=mypanel id=mypanel></div>	    
+<table id="t" style="width:100%">
+</table>    
 
 
 	       
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
-// core begins 
-
-var pets = new Array();
-var incri = 0;
-
-function sxx(sxx){
-document.getElementById("Search").value = sxx;
-myFunction();
-}
-
-function tempAlert(msg,duration)
-{
- var el = document.createElement("div");
- el.setAttribute("style","position: fixed;left: 0;bottom: 0;width: 100%; text-align:center; background-color:white;");
- el.innerHTML = msg;
- setTimeout(function(){
-  el.parentNode.removeChild(el);
- },duration);
- document.body.appendChild(el);
-}
-
-
-
-function copyToClipboard(text){
-    var dummy = document.createElement("input");
-    document.body.appendChild(dummy);
-    dummy.setAttribute('value', 'peerflix "magnet:?xt=urn:btih:' + text + '" --vlc');
-    dummy.select();
-    document.execCommand("copy");
-    document.body.removeChild(dummy);
-	tempAlert('Peerflix Link Copied To Clipboard, Paste It on Console to Start Watching In VlC or <a target=_blank href=magnet:?xt=urn:btih:'+ text+'> Download Via Torrent</a><br> If peerflix Is not present, Install <a target=_blank href=https://nodejs.org/en/>Node JS</a> and then run command<br><font color="red"> npm install -g peerflix</font>',12000);
-	window.open('https://instant.io/#' + text, '_blank');
-}
-
-
-
-function myFunction() {
-  var input = document.getElementById("Search");
-  var filter = input.value.toLowerCase();
-  var nodes = document.getElementsByClassName('filterx');
-
-  for (i = 0; i < nodes.length; i++) {
-    if (nodes[i].title.toLowerCase().includes(filter)) {
-      nodes[i].style.display = "block";
-    } else {
-      nodes[i].style.display = "none";
-    }
-  }
-}
-			
 // hex to string function
 function hex2a(hexx) {
     var hex = hexx.toString();//force conversion
@@ -164,49 +14,68 @@ function hex2a(hexx) {
         str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
     return str;
 }
+//
+function getRandomInt() {
+  return Math.floor(Math.random() * Math.floor(tempx.length));
+}
 
-var promise = '';	
-var promise = $.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=txlist&address=0x0E00D8Bc271a6121CbDe6D542AbC7185C0F9D983&startblock=1&endblock=99999999&sort=asc&apikey=UVPS66SXVMYKVM9J8QMU6U86IG2KEN77QU');
+//
+function changeContent(a,b,c){
+    var x=document.getElementById('t').rows
+    var y=x[a].cells
+    y[b].innerHTML= c
+}
 
-window.setInterval(function(){
-myarr = [];
-elementx = '';
-promise.done(function(data) {	
-maxsize = Object.keys(data.result).length;
-output = data.result[incri].input;
-incri = incri + 1;	
+
+
+// init & fetch JSON
+var table = document.getElementById("t");
+$.getJSON('https://api-ropsten.etherscan.io/api?module=account&action=txlist&address=0x0E00D8Bc271a6121CbDe6D542AbC7185C0F9D983&startblock=1&endblock=99999999&sort=asc&apikey=UVPS66SXVMYKVM9J8QMU6U86IG2KEN77QU').done(function(data) {
+tempx = data.result;
+
+tempx.forEach(function(elementp) {
+output = elementp.input;
 output = output.substr(2);
 output = hex2a(output);
 myarr = output.split(":");
+console.log(output);
 
-
-if(myarr[3].length > 25){
-$.getJSON('https://jsonp4.herokuapp.com/?url=http://imdb-fetch.herokuapp.com/movie/'+myarr[0]).done(function(datax) {
-    	
-    myarr[4]= datax.title;
-    myarr[5]= datax.year;
-    myarr[6]= datax.poster;
-    myarr[7]= datax.plot;
-    myarr[8]= datax.rating;
-    myarr[9]= datax.actors;	
-    myarr[10]= datax.director;
-    myarr[11]= datax.genres.replace( /,/g, "" );
-
-    elementx = `
-    <div class='filterx' title='${myarr[4]} (${myarr[5]}) | ${myarr[9]} | ${myarr[10]} | ${myarr[11]}'>
-    <img onclick="copyToClipboard('${myarr[3]}')" 
-	src="${myarr[6]}" 
-	title='${myarr[4]} (${myarr[5]}) | Actors - ${myarr[9]} | Director - ${myarr[10]} '/></div>
-     `
-      //dublicate remover  
-      if(pets.indexOf(myarr[3]) === -1) {
-      pets.push(myarr[3]);
-      $(".mypanel").append(elementx);
-      console.log("ADDED + " + myarr[4]);
-      } 
-
-});
+//
+if (typeof myarr[3] !== 'undefined') {
+var row = table.insertRow(-1);
+row.insertCell(0).innerHTML = `${myarr[0]}`;
+row.insertCell(1).innerHTML = `${myarr[1]}`;
+row.insertCell(2).innerHTML = `${myarr[2]}`;
+row.insertCell(3).innerHTML = ``;
+row.insertCell(4).innerHTML = ``;
+row.insertCell(5).innerHTML = ``;
+row.insertCell(6).innerHTML = ``;
+row.insertCell(7).innerHTML = ``;
+row.insertCell(8).innerHTML = ``;
+row.insertCell(9).innerHTML = `<a target="_blank" href="https://instant.io/#${myarr[3]}">Watch</a>`;
 }
+//
+
 });
-}, 2700);
+});
+
+
+
+window.setInterval(function(){
+a = getRandomInt();
+gox = table.rows[a].cells[0].innerHTML;
+$.getJSON('https://jsonp4.herokuapp.com/?url=http://imdb-fetch.herokuapp.com/movie/'+gox).done(function(datax) {
+console.log(datax.title);
+
+	changeContent(a,3,datax.title)
+    changeContent(a,4,datax.year)
+	changeContent(a,5,datax.rating)
+	changeContent(a,6,datax.runtime)
+	changeContent(a,7,datax.genres)
+	changeContent(a,8,datax.actors)
+
+});
+}, 4700);
+
+
 </script>
